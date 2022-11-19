@@ -28,7 +28,10 @@ jobs:
         # can specify which OS this VM should run on. 
         # In this case, we are going to run our commands on the latest version
         # of ubuntu
+        name: "Run SFDX Validate"
         runs-on: ubuntu-latest
+        container:
+          image: salesforce/salesforcedx:latest-full
         if: ${{ github.actor != 'dependabot[bot]' }}
         steps:
             # Now we install nodejs in the VM, and specify version 14
