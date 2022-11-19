@@ -110,7 +110,8 @@ jobs:
 
             # Install java as it is required for the next step
             - name: 'Installing java'
-              run: sudo apt install default-jre
+              run: sudo apt update
+                   sudo apt install default-jre
                    sudo apt install default-jdk 
 
 
