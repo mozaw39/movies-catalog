@@ -17,6 +17,7 @@ on:
       # when changing non-salesforce files (like this yml file).
       paths:
         - 'force-app/**'
+        - 
             
 
 # Jobs to be executed when the above conditions are met
@@ -110,10 +111,6 @@ jobs:
 
             # Install java as it is required for the next step
             - name: 'Installing java'
-              run: sudo apt update
-                   sudo apt install default-jre
-                   sudo apt install default-jdk 
-
 
             # Install SFDX scanner
             - name: 'Installing SFDX scanner'
