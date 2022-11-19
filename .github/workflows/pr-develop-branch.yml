@@ -111,9 +111,9 @@ jobs:
 
             # Install java as it is required for the next step
             - name: 'Installing java'
-              run: sudo apt update 
-                   sudo apt install default-jre
-                   sudo apt install default-jdk 
+              run: sudo apt-get update 
+                   sudo apt-get install default-jre
+                   sudo apt-get install default-jdk 
 
 
             # Install SFDX scanner
