@@ -1,18 +1,15 @@
 <template>
-    <div
-        class="slds-grid slds-wrap slds-col slds-size_1-of-1 list-items"
-      >
-    
+  <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 list-items">
     <template if:true={movies}>
-        <template for:each={movies} for:item="movie">
-          <div class="slds-col slds-size_1-of-3" key={movie.id}>
-            <c-movie-card
-              image={movie.image}
-              title={movie.title}
-              body={movie.body}
-            ></c-movie-card>
-          </div>
-        </template>
+      <template for:each={movies} for:item="movie">
+        <div class="slds-col slds-size_1-of-3" key={movie.id}>
+          <c-movie-card
+            image={movie.image}
+            title={movie.title}
+            body={movie.body}
+          ></c-movie-card>
+        </div>
       </template>
-    </div>
+    </template>
+  </div>
 </template>
