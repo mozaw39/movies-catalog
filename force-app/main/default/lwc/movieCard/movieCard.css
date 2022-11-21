@@ -7,3 +7,7 @@ img {
 .previewed-image {
     width: 40%;
 }
+
+.movie-container{
+  margin: 0.2rem
+}

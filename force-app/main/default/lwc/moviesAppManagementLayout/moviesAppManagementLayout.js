@@ -2,7 +2,7 @@ import { LightningElement } from "lwc";
 
 export default class MoviesAppManagementLayout extends LightningElement {
   searchInput;
-  previewedMovie;
+  previewedMovie = { title: null, image: null, body: null };
 
   handleSearchInputChange(event) {
     this.searchInput = event.detail;
@@ -12,7 +12,8 @@ export default class MoviesAppManagementLayout extends LightningElement {
   }
 
   handlePreviewMovie(event) {
-    console.log('handlePrieviewMovie parent:',event.detail);
+    console.log("handlePrieviewMovie parent:", event.detail);
     this.previewedMovie = event.detail;
+    console.log("previewedMovie:", this.previewedMovie.title);
   }
 }
