@@ -5,5 +5,5 @@ const imageSrc =
 
 export default class MoviePreview extends LightningElement {
   iurl = imageSrc;
-  @api title;
+  @api previewedMovie;
 }
