@@ -1,8 +1,33 @@
 <template>
-        <c-movie-card
-          is-previewed="true"
-          image={iurl}
-          title={title}
-          body="previewed body"
-        ></c-movie-card>
+  <div>
+    <c-movie-card
+      is-previewed="true"
+      image={previewedMovie.image}
+      title={previewedMovie.title}
+      body={previewedMovie.body}
+      is-edit-mode={isEditMode}
+    ></c-movie-card>
+    <div class="slds-align_absolute-center buttons-container">
+      <lightning-button
+        variant="brand"
+        label="Update"
+        onclick={handleUpdate}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+      <!-- <template if:true={isEditMode}>
+        <lightning-button
+          variant="brand"
+          label="Cancel"
+          onclick={handleCancel}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </template> -->
+      <lightning-button
+        variant="brand"
+        label="Delete"
+        onclick={handleDelete}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+    </div>
+  </div>
 </template>

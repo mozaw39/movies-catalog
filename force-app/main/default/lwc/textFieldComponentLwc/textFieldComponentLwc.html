@@ -1,0 +1,10 @@
+<template>
+    <template if:true={isEditMode}>
+        <lightning-input type="text" value={text} onchange={handleTextChange}></lightning-input>
+    </template>
+    <template if:false={isEditMode}>
+        <p class="slds-text-body_regular">
+            {text}
+          </p>
+    </template>
+</template>

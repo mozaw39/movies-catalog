@@ -7,6 +7,7 @@
       ></c-filter-movies-lwc>
       <c-movies-results
         class="list-items"
+        oninitpreviewmoviechange={handlePreviewMovieInit}
         onpreviewmoviechange={handlePreviewMovie}
       ></c-movies-results>
     </div>
@@ -14,7 +15,10 @@
       class="slds-grid slds-wrap slds-col slds-size_6-of-12 preview-container"
     >
       <div class="slds-col slds-size_1-of-1">
-        <c-movie-preview title={previewedMovie}></c-movie-preview>
+        <c-movie-preview
+          previewed-movie={previewedMovie}
+          ontextchange={handleTextChange}
+        ></c-movie-preview>
       </div>
     </div>
   </div>
