@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <c-movie-card
+      is-previewed="true"
+      id={previewedMovie.id}
+      image={previewedMovie.image}
+      title={previewedMovie.title}
+      body={previewedMovie.body}
+      rating={previewedMovie.rating}
+      category={previewedMovie.category}
+      release-date={previewedMovie.releaseDate}
+      is-edit-mode={isEditMode}
+    ></c-movie-card>
+    <div class="slds-align_absolute-center buttons-container">
+      <template if:false={isEditMode}>
+        <lightning-button
+          variant="brand"
+          label={label.updateMovie}
+          onclick={handleUpdate}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </template>
+      <!-- <template if:true={isEditMode}>
+        <lightning-button
+          variant="brand"
+          label="Cancel"
+          onclick={handleCancel}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </template> -->
+      <lightning-button
+        variant="brand"
+        label={label.deleteMovie}
+        onclick={handleDelete}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+    </div>
+  </div>
+</template>

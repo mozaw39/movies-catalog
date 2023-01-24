@@ -1,0 +1,19 @@
+<template>
+  <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 list-items">
+    <template if:true={filteredMovies}>
+      <template for:each={filteredMovies} for:item="movie">
+        <div class="slds-col slds-size_1-of-3" key={movie.id}>
+          <c-movie-card
+            id={movie.id}
+            image={movie.image}
+            title={movie.title}
+            body={movie.body}
+            category={movie.category}
+            release-date={movie.releaseDate}
+            rating={movie.rating}
+          ></c-movie-card>
+        </div>
+      </template>
+    </template>
+  </div>
+</template>

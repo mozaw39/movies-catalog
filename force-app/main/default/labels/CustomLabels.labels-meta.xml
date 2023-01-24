@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>label_DeleteMovie</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Delete Movie</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>label_NewMovie</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Movie</shortDescription>
+        <value>New Movie</value>
+    </labels>
+    <labels>
+        <fullName>label_SearchActors</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search Actors</shortDescription>
+        <value>Search Actors</value>
+    </labels>
+    <labels>
+        <fullName>label_UpdateMovie</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Update Movie</shortDescription>
+        <value>Update</value>
+    </labels>
+</CustomLabels>

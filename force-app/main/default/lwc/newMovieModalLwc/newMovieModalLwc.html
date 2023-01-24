@@ -1,0 +1,107 @@
+<template>
+  <template if:true={showModal}>
+    <!-- <lightning-modal-header label="My Modal Heading"></lightning-modal-header> -->
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <!-- Modal/Popup Box LWC header here -->
+        <header class="slds-modal__header">
+          <button
+            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+            title="Close"
+            onclick={closeModal}
+          >
+            <lightning-icon
+              icon-name="utility:close"
+              alternative-text="close"
+              size="small"
+            ></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2
+            id="modal-heading-01"
+            class="slds-text-heading_medium slds-hyphenate"
+          >
+            Add new movie
+          </h2>
+        </header>
+        <!-- Modal/Popup Box LWC body starts here -->
+        <div
+          class="slds-modal__content slds-p-around_medium"
+          id="modal-content-id-1"
+        >
+        <!-- record form used for movie inputs -->
+          <lightning-record-edit-form
+            object-api-name="Movie__c"
+            onsuccess={handleSuccess}
+            onerror={handleError}
+            onsubmit={handleMovieCreation}
+          >
+            <lightning-input-field data-id="form-movie-input" field-name={movieName} data-field={movieName.fieldApiName}>
+            </lightning-input-field>
+            <lightning-input-field
+              data-id="form-movie-input"
+              field-name={movieCategory}
+              data-field={movieCategory.fieldApiName}
+            >
+            </lightning-input-field>
+            <lightning-input-field data-id="form-movie-input" field-name={movieBody} data-field={movieBody.fieldApiName}>
+            </lightning-input-field>
+            <lightning-input-field
+              data-id="form-movie-input"
+              field-name={movieRating}
+              data-field={movieRating.fieldApiName}
+            >
+            </lightning-input-field>
+            <lightning-input-field
+              data-id="form-movie-input"
+              field-name={movieReleaseDate}
+              data-field={movieReleaseDate.fieldApiName}
+            >
+            </lightning-input-field>
+            <!-- iterate over the Actors lookup components -->
+            <template for:each={actors} for:item="actor">
+              <span key={actor.index} class="slds-grid slds-list_horizontal">
+                <c-custom-lookup-lwc
+                  class="slds-size_11-of-12"
+                  index={actor.index}
+                  data-id="form-actor-input"
+                  obj-name="Actor__c"
+                  search-placeholder={label.searchActors}
+                  icon-name="utility:user"
+                  onlookupselected={handleAccountSelection}
+                ></c-custom-lookup-lwc>
+                <!-- action button of lookup components (add/remove) -->
+                <lightning-button-icon
+                  onclick={handleLookupAction}
+                  data-index={actor.index}
+                  class="slds-size_1-of-12"
+                  data-action={actor.iconName}
+                  icon-name={actor.iconName}
+                ></lightning-button-icon>
+              </span>
+            </template>
+            <div class="slds-var-m-top_medium">
+              <lightning-button
+                class="slds-m-left_x-small"
+                variant="brand"
+                type="submit"
+                label="Save"
+              >
+              </lightning-button>
+            </div>
+          </lightning-record-edit-form>
+        </div>
+      </div>
+      <!-- <lightning-modal-body>
+          
+        </lightning-modal-body> -->
+    </section>
+  </template>
+</template>

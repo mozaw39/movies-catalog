@@ -1,0 +1,31 @@
+<template>
+  <div class="star-rating" id={name}>
+    <input data-id="5" type="radio" id="5-stars" name="rating" value="5" disabled />
+<!--     <label for="5-stars" class="star-unchecked">&#9733;</label>
+ -->    <label for="5-stars" class={whichStarIsChecked.fiveStar}>&#9733;</label>
+  
+
+ <input data-id="4" type="radio" id="4-stars" name="rating" value="4" disabled/>
+<!--  <label for="4-stars" class="star-unchecked">&#9733;</label> 
+ -->    <label for="4-stars" class={whichStarIsChecked.forStar}>&#9733;</label> 
+
+
+    <input data-id="3" type="radio" id="3-stars" name="rating" value="3"  disabled/>
+<!--     <label for="3-stars" class="star-checked">&#9733;</label> 
+ -->    <label for="3-stars" class={whichStarIsChecked.threeStar}>&#9733;</label> 
+
+
+ <input data-id="2" type="radio" id="2-stars" name="rating" value="2"  disabled/>
+<!--  <label for="2-stars" class="star-checked">&#9733;</label>
+ -->    <label for="2-stars" class={whichStarIsChecked.twoStar}>&#9733;</label>
+
+
+<input data-id="1" type="radio" id="1-star" name="rating" value="1" disabled/>
+<!-- <label for="1-star" class="star-checked">&#9733;</label>
+ -->    <label for="1-star" class={whichStarIsChecked.oneStar}>&#9733;</label>
+
+
+    
+</div>
+
+</template>
