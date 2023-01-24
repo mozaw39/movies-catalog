@@ -2,7 +2,7 @@ public with sharing class MovieUtility {
   public MovieUtility() {
   }
 
-  public static void importMoviesFromRapidApi() {
+  /*public static void importMoviesFromRapidApi() {
     System.debug('api call');
     Http http = new Http();
     HttpRequest request = new HttpRequest();
@@ -42,14 +42,11 @@ public with sharing class MovieUtility {
             newMovie.PosterImage__c = (String) posterImage.get('url');
             newMovie.ReleaseDate__c = System.today();
             convertedMovies.add(newMovie);
-            /* newMovie.Category__c = ;
-            newMovie.Category__c = ;
-            newMovie.Category__c = ; */
           }
       }
     }
     Database.upsert(convertedMovies,Movie__c.TechEmsId__c,false);
-  }
+  }*/
 
   public static void updateReleasedMovies(List<sObject> lstMovies){
     List<Movie__c> moviesToUpdate = new List<Movie__c>();
