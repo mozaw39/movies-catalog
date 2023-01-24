@@ -1,38 +1,25 @@
 import { LightningElement } from "lwc";
+import newMovie from '@salesforce/label/c.label_NewMovie';
 
 export default class MoviesAppManagementLayout extends LightningElement {
+  label = {newMovie};
   searchInput;
-  previewedMovie = {
-    title: null,
-    image: null,
-    body: null,
-    isPreviewed: true,
-    isEditMode: false
-  };
-
-  handlePreviewMovieInit(event) {
-    this.previewedMovie = {
-      ...this.previewedMovie,
-      title: event.detail.title,
-      image: event.detail.image,
-      body: event.detail.body
-    };
-  }
-
+  layoutClass = "slds-grid slds-wrap";
+  showModal = false;
+  modalStyleClass;
   handleSearchInputChange(event) {
     this.searchInput = event.detail;
     this.template
       .querySelector("c-movies-results")
       .handleSearchResults(this.searchInput);
   }
-
-  handlePreviewMovie(event) {
-    console.log("handlePrieviewMovie parent:", event.detail);
-    this.previewedMovie = event.detail;
+  showMovieCreationPopup() {
+    console.log("showMovieCreationPopup");
+    this.template.querySelector("c-new-movie-modal-lwc").setShowModal(true);
   }
-
-  handleTextChange(event) {
-    var label = event.detail.label;
-    this.previewedMovie[label] = event.detail.text;
+  handleMovieCreation(){
+    this.template
+      .querySelector("c-movies-results")
+      .refreshMovies();
   }
 }

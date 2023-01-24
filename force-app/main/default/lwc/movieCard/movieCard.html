@@ -5,27 +5,71 @@
         <img class={imageSizeClass} src={image} />
       </header>
     </div>
-    <div class="slds-card__body slds-card__body_inner">
-      <div class="slds-illustration slds-illustration_small">
-        <!-- <div class="slds-text-longform"> -->
-          <!-- <h3 class="slds-text-heading_medium">{title}</h3> -->
-          <!-- <lightning-input
-            type="text"
-            value={title}
-            readonly={isNotEditMode}
-          ></lightning-input> -->
-          <c-text-field-component-lwc label="title" text={title} is-edit-mode={isEditMode}></c-text-field-component-lwc>
-          <c-text-field-component-lwc label="body" text={body} is-edit-mode={isEditMode}></c-text-field-component-lwc>
+    <!-- movie card in view mode -->
+    <template if:false={isEditMode}>
+      <div class="slds-card__body slds-card__body_inner">
+        <div class="slds-illustration slds-illustration_small">
+          <c-text-field-component-lwc
+            label="title"
+            text={title}
+            is-edit-mode={isEditMode}
+          ></c-text-field-component-lwc>
+          <c-text-field-component-lwc
+            label="category"
+            text={category}
+            is-edit-mode={isEditMode}
+          ></c-text-field-component-lwc>
+          <!-- visible only in movie preview -->
+          <!-- <template if:true={isPreviewed}>
+            <c-text-field-component-lwc
+              label="body"
+              text={body}
+              is-edit-mode={isEditMode}
+            ></c-text-field-component-lwc>
+          </template> -->
+          <c-text-field-component-lwc
+            label="releaseDate"
+            text={releaseDate}
+            is-edit-mode={isEditMode}
+          ></c-text-field-component-lwc>
+          <c-rating-component
+            name={title}
+            is-one-star-checked={isOneStarChecked}
+            is-two-star-checked={isTwoStarChecked}
+            is-three-star-checked={isThreeStarChecked}
+            is-for-star-checked={isForStarChecked}
+            is-five-star-checked={isFiveStarChecked}
+            which-star-is-checked={whichStarIsChecked}
+            checked-star={rating}
+          ></c-rating-component>
           <!-- <p class="slds-text-body_regular">
-              {body}
-            </p> -->
+                {body}
+              </p> -->
           <!-- <lightning-input
-            type="text"
-            value={body}
-            readonly={isNotEditMode}
-          ></lightning-input> -->
-        <!-- </div> -->
+              type="text"
+              value={body}
+              readonly={isNotEditMode}
+            ></lightning-input> -->
+          <!-- </div> -->
+        </div>
       </div>
-    </div>
+    </template>
+    <!-- movie card in edit mode -->
+    <template if:true={isEditMode}>
+      <lightning-record-edit-form object-api-name="Movie__c" onsuccess={handleSuccess} onerror={handleError} record-id={recordEditFormId} onload={handleload}>
+        <lightning-input-field field-name={movieName}> </lightning-input-field>
+<!--         <lightning-input-field field-name={movieBody}> </lightning-input-field>
+ -->        <lightning-input-field field-name={movieRating}>
+        </lightning-input-field>
+        <lightning-input-field field-name={movieCategory}>
+        </lightning-input-field>
+        <lightning-input-field field-name={movieReleaseDate}>
+        </lightning-input-field>
+        <div class="slds-var-m-top_medium">
+          <lightning-button class="slds-m-left_x-small" variant="brand" type="submit" label="Save">
+          </lightning-button>
+        </div>
+      </lightning-record-edit-form>
+    </template>
   </article>
 </template>

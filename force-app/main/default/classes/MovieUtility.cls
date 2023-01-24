@@ -2,16 +2,8 @@ public with sharing class MovieUtility {
   public MovieUtility() {
   }
 
-  @AuraEnabled(cacheable=true)
-  public static List<Movie__c> getMovies(){
-    try {
-      return [SELECT Id, Name, PosterImage__c FROM Movie__c];
-    } catch (Exception e) {
-      throw new AuraHandledException(e.getMessage());
-    }
-  }
-
   public static void importMoviesFromRapidApi() {
+    System.debug('api call');
     Http http = new Http();
     HttpRequest request = new HttpRequest();
     request.setEndpoint('https://flixster.p.rapidapi.com/movies/get-popularity?zipCode=90002&radius=50');
@@ -57,6 +49,16 @@ public with sharing class MovieUtility {
       }
     }
     Database.upsert(convertedMovies,Movie__c.TechEmsId__c,false);
+  }
+
+  public static void updateReleasedMovies(List<sObject> lstMovies){
+    List<Movie__c> moviesToUpdate = new List<Movie__c>();
+    for(SObject movie: lstMovies){
+      Movie__c movieToUpdate = new Movie__c(Id = movie.Id);
+      movieToUpdate.IsReleased__c = true;
+      moviesToUpdate.add(movieToUpdate);
+    }
+    update moviesToUpdate;
   }
 
 }

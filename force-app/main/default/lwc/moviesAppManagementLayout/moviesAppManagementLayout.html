@@ -1,24 +1,26 @@
 <template>
-  <div class="slds-grid slds-wrap">
+  <div class={layoutClass}>
     <div class="slds-grid slds-wrap slds-col slds-size_6-of-12 container">
+      <div class="slds-m-right_x-small">
+        <lightning-button
+          variant="brand"
+          label={label.newMovie}
+          onclick={showMovieCreationPopup}
+          class="slds-m-right_x-small"
+        ></lightning-button>
+        <c-new-movie-modal-lwc onmoviecreation={handleMovieCreation}></c-new-movie-modal-lwc>
+      </div>
       <c-filter-movies-lwc
         class="search-input"
         onsearchinputchange={handleSearchInputChange}
       ></c-filter-movies-lwc>
-      <c-movies-results
-        class="list-items"
-        oninitpreviewmoviechange={handlePreviewMovieInit}
-        onpreviewmoviechange={handlePreviewMovie}
-      ></c-movies-results>
+      <c-movies-results class="list-items"></c-movies-results>
     </div>
     <div
       class="slds-grid slds-wrap slds-col slds-size_6-of-12 preview-container"
     >
       <div class="slds-col slds-size_1-of-1">
-        <c-movie-preview
-          previewed-movie={previewedMovie}
-          ontextchange={handleTextChange}
-        ></c-movie-preview>
+        <c-movie-preview></c-movie-preview>
       </div>
     </div>
   </div>
